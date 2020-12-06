@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FootballicaWebApp.Models.Footballer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@*For Display Footballer Info*@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Position)</th>
+            <th>@Html.DisplayNameFor(model => model.Team)</th>
+            <th>@Html.DisplayNameFor(model => model.Nationalty)</th>
+        </tr>
+        </thead>
+
+    <tbody>
+        @foreach (var foot in Model) { 
+        <tr>
+            <td>@Html.DisplayFor(modelItem => foot.Name)</td>
+            <td>@Html.DisplayFor(modelItem => foot.Position)</td>
+            <td>@Html.DisplayNameFor(model => model.Team)</td>
+            <td>@Html.DisplayNameFor(model => model.Nationalty)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@foot.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@foot.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@foot.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
