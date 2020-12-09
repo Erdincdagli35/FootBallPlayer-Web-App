@@ -23,7 +23,7 @@ namespace FootballicaWebApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult FootballPlayers()
         {
             return View();
         }

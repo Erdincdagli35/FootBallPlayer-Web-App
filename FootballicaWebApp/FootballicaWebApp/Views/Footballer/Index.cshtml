@@ -26,8 +26,8 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => foot.Name)</td>
             <td>@Html.DisplayFor(modelItem => foot.Position)</td>
-            <td>@Html.DisplayNameFor(model => model.Team)</td>
-            <td>@Html.DisplayNameFor(model => model.Nationalty)</td>
+            <td>@Html.DisplayFor(modelItem => foot.Team)</td>
+            <td>@Html.DisplayFor(modelItem => foot.Nationalty)</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@foot.Id">Edit</a>
                 <a asp-action="Details" asp-route-id="@foot.Id">Details</a>

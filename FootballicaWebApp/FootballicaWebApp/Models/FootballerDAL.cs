@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace FootballicaWebApp.Models
             using (SqlConnection con = new SqlConnection(connectionString)) 
             {
                 SqlCommand cmd = new SqlCommand("SP_InsertFootballer",con);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@Name",foot.Name);
                 cmd.Parameters.AddWithValue("@Position", foot.Position);
@@ -60,13 +61,14 @@ namespace FootballicaWebApp.Models
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("SP_UpdateFootballer", con);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@F_Id", foot.Id);
+                cmd.Parameters.AddWithValue("@Id", foot.Id);
                 cmd.Parameters.AddWithValue("@Name", foot.Name);
                 cmd.Parameters.AddWithValue("@Position", foot.Position);
                 cmd.Parameters.AddWithValue("@Team", foot.Team);
                 cmd.Parameters.AddWithValue("@Nationalty", foot.Nationalty);
+        
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -100,7 +102,7 @@ namespace FootballicaWebApp.Models
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("SP_GetFootballerByID", con);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@F_Id",fID);
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();

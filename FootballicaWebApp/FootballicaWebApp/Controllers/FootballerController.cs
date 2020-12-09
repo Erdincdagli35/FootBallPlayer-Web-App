@@ -10,6 +10,7 @@ namespace FootballicaWebApp.Controllers
     public class FootballerController : Controller
     {
         FootballerDAL footDAL = new FootballerDAL();
+      
         public IActionResult Index()
         {
             List<Footballer> fList = new List<Footballer>();
@@ -19,6 +20,7 @@ namespace FootballicaWebApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+
             return View();
         }
 
@@ -33,7 +35,7 @@ namespace FootballicaWebApp.Controllers
             }
             return View(obFoot);
         }
-        
+
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -45,9 +47,10 @@ namespace FootballicaWebApp.Controllers
                 return NotFound();
             
             return View(f);
+
         }
 
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int? id,[Bind] Footballer obFoot)
         {
@@ -60,7 +63,6 @@ namespace FootballicaWebApp.Controllers
                 footDAL.UpdateFootballer(obFoot);
                 return RedirectToAction("Index");
             }
-
             return View(footDAL);
         }
         [HttpGet]
@@ -74,7 +76,7 @@ namespace FootballicaWebApp.Controllers
             if (f == null)
                 return NotFound();
 
-            return View();
+            return View(f);
         }
         public IActionResult Delete(int? id)
         {
